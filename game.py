@@ -30,13 +30,15 @@ class Monster:
 
 monster_one = Monster("large", "blue", "round")
 monster_two = Monster("small", "pink", "square") 
-print(repr(monster_one))
-monster_one.defeated()
-monster_one.disappear()
+#print(repr(monster_one))
+#monster_one.defeated()
+#monster_one.disappear()
+#print(monster_one.points)
+#print(monster_two.is_defeated)
 
-print(repr(monster_two))
-monster_two.defeated()
-monster_two.disappear()
+#print(repr(monster_two))
+#monster_two.defeated()
+#monster_two.disappear()
 
 #print(monster_one.size)
 #print(monster_one.points)
@@ -52,29 +54,32 @@ monster_two.disappear()
 class Hero:
   # name of player
   # number of points
-  # number of monsters killed
-  def __innit__(self, name, color, num_monsters_defeated = 0, points = 20):
+  # number of monsters defeated
+  def __init__(self, name, color):
     self.name = name
     self.color = color
-    self.num_monsters_defeated = num_monsters_defeated
-    self.points = points
+    self.num_monsters_defeated = 0
+    self.points = 20
     self.is_defeated = False
     self.is_victorious = False
 
   def __repr__(self):
+    return "Welcome hero {name}! Your goal is to defeat monsters and win the game. You have {points}. Each time you defeat a monster, you get 2 points. Each time a monster attacks you, you lose 2 points. You win the game when you reach 40 points! Let the games begin!".format(name = self.name, points = self.points)
+
+  def defeated(self):
     #prints the name of the trainer, number of monsters defeated, and the number of current points. Also prints the number of monsters that need to be defeated to win. 
-    print ("The hero {name} has defeated {num_monsters_defeated} and has {points} points.".format(name = self.name, num_monsters_defeated = self.num_monsters_defeated, points = self.points))
-    for needed_points in self.points:
-      return (needed_points == (40 - self.points))
-    return "{needed_points} are needed to win the game!".format(needed_points = needed_points)
+    return ("The hero {name} has defeated {num_monsters_defeated} monsters and has {points} points.".format(name = self.name, num_monsters_defeated = self.num_monsters_defeated, points = self.points))
+    #for needed_points in self.points:
+      #return (needed_points == (40 - self.points))
+    #return "{needed_points} are needed to win the game!".format(needed_points = needed_points)
 
   def attack(self):
     return "The hero {name} attacked the {monster}! The hero receives 2 points.".format(name = self.name, monster = monster)
-hero_one = Hero()
-hero_one.name = "Tina"
-hero_one.color = "teal"
-#hero_one = Hero("Tina", "teal")
-print(hero_one.name)
-print(hero_one.color)
-print(hero_one.points)
-hero_one.attack
+
+
+hero_one = Hero("Tina", "teal")
+#print(hero_one.name)
+#print(hero_one.color)
+#print(hero_one.points)
+#print(repr(hero_one))
+hero_one.defeated()
